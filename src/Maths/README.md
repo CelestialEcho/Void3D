@@ -3,9 +3,9 @@ Here is provided the short documentation for maths in **Void3D**. The full one w
 
 ## provided classes
 
- - Matrix class (Basic Matrix class) (`headers/Matrix.h`)
- - VoidVec2d class (2x1 Vector's class) (`headers/VoidVector2D.h`)
- - VoidVec3d class (3x1 Vector's class) (`headers/VoidVector3D.h`)
+ - Matrix class (Matrix class) (`Math.h`)
+ - VoidVec2d class (2x1 Vector's class) (`Math.h`)
+ - VoidVec3d class (3x1 Vector's class) (`Math.h`)
 
 ### Matrixes
 Matrix could be defined as "*nested list*" in stupid language or "*a table of numbers, symbols, or expressions, with elements or entries arranged in rows and columns, which is used to represent a mathematical object or property of such an object*" using wikipedia's defenition.
@@ -28,7 +28,14 @@ Matrix could be defined as "*nested list*" in stupid language or "*a table of nu
     \ 7 8 9 /
 
     ```
+ - To create a matrix object using my class you check out **this example**:
+    ```C++
+    
+    #include "headers/Math.h" //Math.h contains all the include files in it. 
 
+    Matrix matrix_object = Matrix()
+
+    ```
 
 
 
