@@ -2,6 +2,8 @@
 #include <vector>
 #include <iostream>
 #include <stdexcept>
+#include <cmath>
+
 
 class Matrix {
 public:
@@ -47,6 +49,9 @@ public:
     VoidVec3d operator-(const VoidVec3d& vec) const;
     VoidVec3d operator*(float scalar) const;
     VoidVec3d operator*(const Matrix& mat) const;
+    VoidVec3d rotate_x(float theta) const;
+    VoidVec3d rotate_y(float theta) const;
+    VoidVec3d rotate_z(float theta) const;
     bool operator==(const VoidVec3d& vec) const;
     bool operator!=(const VoidVec3d& vec) const;
     void print() const;

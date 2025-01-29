@@ -109,6 +109,40 @@ bool VoidVec3d::operator!=(const VoidVec3d& vec) const {
     return !(*this == vec);
 }
 
+
+
+VoidVec3d rotate_x(float theta) const {
+    float radians = theta * M_PI / 180.f;
+    Matrix rotation(3, 3, {
+        {1, 0, 0},
+        {0, cos(radians), -sin(radians)},
+        {0, sin(radians), cos(radians)}
+    });
+    return *this * rotation;
+}
+
+VoidVec3d rotate_y(float theta) const {
+    float radians = theta * M_PI / 180.f;
+    Matrix rotation(3, 3, {
+        {cos(radians), 0, sin(radians)},
+        {0, 1, 0},
+        {-sin(radians), 0, cos(radians)}
+    });
+    return *this * rotation;
+}
+
+VoidVec3d rotate_z(float theta) const {
+    float radians = theta * M_PI / 180.f;
+    Matrix rotation(3, 3, {
+        {cos(radians), -sin(radians), 0},
+        {sin(radians), cos(radians), 0},
+        {0, 0, 1}
+    });
+    return *this * rotation;
+}
+
+
+
 void VoidVec3d::print() const {
     std::cout << "(" << x << ", " << y << ", " << z << ")" << std::endl;
 }
