@@ -7,7 +7,7 @@ Here is provided the short documentation for maths in **Void3D**. The full one w
  - VoidVec2d class (2x1 Vector's class) (`Math.h`)
  - VoidVec3d class (3x1 Vector's class) (`Math.h`)
 
-### Matrixes
+### Matricies
 Matrix could be defined as "*nested list*" in stupid language or "*a table of numbers, symbols, or expressions, with elements or entries arranged in rows and columns, which is used to represent a mathematical object or property of such an object*" using wikipedia's defenition.
 
 **Some Useful information**
