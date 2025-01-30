@@ -11,6 +11,8 @@ Here is provided the short documentation for maths in **Void3D**. The full one w
 Matrix could be defined as "*nested list*" in stupid language or "*a table of numbers, symbols, or expressions, with elements or entries arranged in rows and columns, which is used to represent a mathematical object or property of such an object*" using wikipedia's defenition.
 
 **Some Useful information**
+ - If you're going to act with matrixes your self, you should first research how to do it.
+    - For example: imagine what we have a matricies R and V -> R * V != V * R 
  - I'm using **Rows-Major** matrix writing system:
     For example: 
     ```
@@ -49,5 +51,17 @@ Matrix could be defined as "*nested list*" in stupid language or "*a table of nu
 
     */
     ```
+
+ - To rotate a matrix you have to multiply your vector (cuz it's also matrix) or matrix using `mathconst::rotate(float x, float y, float z)`, where x y z is a radians.
+    - To convert angles to radians you could use `mathfunc::convert2rad(float theta)` where theta is you angles
+    - Here is the example:
+        ```C++
+        
+        /*
+        output:
+        */
+        
+        ```
+
 
     
