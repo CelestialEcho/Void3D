@@ -18,11 +18,12 @@ mathclass::VoidVec2d mathclass::VoidVec2d::operator*(float scalar) const
     return VoidVec2d(this->x * scalar, this->y * scalar);
 }
 
-std::ostream& mathclass::operator<<(std::ostream& os, const VoidVec2d& vec)
+std::ostream& mathclass::operator<<(std::ostream& os, const mathclass::VoidVec2d& vec)
 {
     os << "(" << vec.x << ", " << vec.y << ")";
     return os;
 }
+
 
 
 //---------------------------------------------------------------------------------------------
@@ -43,12 +44,12 @@ mathclass::VoidVec3d mathclass::VoidVec3d::operator*(float scalar) const
     return VoidVec3d(this->x * scalar, this->y * scalar, this->z * scalar);
 }
 
-mathclass::VoidVec3d mathclass::VoidVec3d::operator*(const VoidVec3d& other)
+mathclass::VoidVec3d mathclass::VoidVec3d::operator*(const mathclass::VoidVec3d& other) const
 {
-    return VoidVec3d(this->x * other.x, this->y * other.y, this->z * other.z);
+    return mathclass::VoidVec3d(x * other.x, y * other.y, z * other.z);
 }
 
-std::ostream& mathclass::operator<<(std::ostream& os, const VoidVec3d& vec)
+std::ostream& mathclass::operator<<(std::ostream& os, const mathclass::VoidVec3d& vec)
 {
     os << "(" << vec.x << ", " << vec.y << ", " << vec.z << ")";
     return os;
@@ -116,11 +117,11 @@ mathclass::Matrix mathclass::Matrix::operator*(float scalar) const
     return Matrix(result);
 }
 
-std::ostream& mathclass::operator<<(std::ostream& os, const Matrix& matrix)
+std::ostream& mathclass::operator<<(std::ostream& os, const mathclass::Matrix& matrix)
 {
-    for (int i = 0; i < matrix.rows; ++i) {
-        for (int j = 0; j < matrix.cols; ++j) {
-            os << matrix.matrix[i][j] << " ";
+    for (const auto& row : matrix.matrix) {
+        for (const auto& elem : row) {
+            os << elem << " ";
         }
         os << std::endl;
     }
@@ -131,7 +132,7 @@ std::ostream& mathclass::operator<<(std::ostream& os, const Matrix& matrix)
 //--------------------------------------------------------------------------------------------
 //Matrix Transformation Constants
 
-mathconst::Matrix mathconst::offset(float x, float y, float z)
+mathclass::Matrix mathconst::offset(float x, float y, float z)
 {
     return mathclass::Matrix({{1, 0, 0, x},
                               {0, 1, 0, y},
@@ -139,9 +140,9 @@ mathconst::Matrix mathconst::offset(float x, float y, float z)
                               {0, 0, 0, 1}});
 }
 
-mathconst::Matrix mathconst::rotate(float x, float y, float z)
+mathclass::Matrix mathconst::rotate(float x, float y, float z)
 {
-    // Поворот вокруг оси X
+    // X-axis
     mathclass::Matrix Rx({
         {1, 0, 0, 0},
         {0, cos(x), -sin(x), 0},
@@ -149,7 +150,7 @@ mathconst::Matrix mathconst::rotate(float x, float y, float z)
         {0, 0, 0, 1}
     });
 
-    // Поворот вокруг оси Y
+    // Y-axis
     mathclass::Matrix Ry({
         {cos(y), 0, sin(y), 0},
         {0, 1, 0, 0},
@@ -157,7 +158,7 @@ mathconst::Matrix mathconst::rotate(float x, float y, float z)
         {0, 0, 0, 1}
     });
 
-    // Поворот вокруг оси Z
+    // Z-axis
     mathclass::Matrix Rz({
         {cos(z), -sin(z), 0, 0},
         {sin(z), cos(z), 0, 0},
@@ -166,6 +167,6 @@ mathconst::Matrix mathconst::rotate(float x, float y, float z)
     });
 
     // Умножение матриц поворота
-    return Rz * Ry * Rx; // Важно: умножаем в таком порядке
+    return Rz * Ry * Rx; // !!! do not change the queue, cuz only this one is correct, in matricies r * v != v * r
 }
 

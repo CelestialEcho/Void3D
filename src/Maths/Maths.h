@@ -18,7 +18,7 @@ namespace mathclass
         Matrix operator*(const Matrix& other) const;
         Matrix operator*(float scalar) const;
 
-        friend std::ostream& operator<<(std::osream& os, const Matrix& matrix); 
+        friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix); 
     };
 
 
@@ -61,8 +61,8 @@ namespace mathfunc
 
 namespace mathconst 
 {
-    Matrix offset(float x, float y, float z);
-    Matrix rotate(float x, float y, float z);
+    mathclass::Matrix offset(float x, float y, float z);
+    mathclass::Matrix rotate(float x, float y, float z);
 };
 
 
