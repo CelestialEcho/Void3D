@@ -43,7 +43,9 @@ Matrix could be defined as "*nested list*" in stupid language or "*a table of nu
     /*
     output:
 
-
+    1 2 3
+    4 5 6
+    7 8 9
 
     */
     ```
