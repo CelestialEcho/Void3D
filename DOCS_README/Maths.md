@@ -52,16 +52,31 @@ Matrix could be defined as "*nested list*" in stupid language or "*a table of nu
     */
     ```
 
- - To rotate a matrix you have to multiply your vector (cuz it's also matrix) or matrix using `mathconst::rotate(float x, float y, float z)`, where x y z is a radians.
-    - To convert angles to radians you could use `mathfunc::convert2rad(float theta)` where theta is you angles
+ - To rotate a matrix you have to multiply your vector (cuz it's also matrix) or matrix using `mathconst::rotate(float x, float y, float z)`, where x y z is a **radians**.
+    - To convert angles to radians you could use `mathfunc::convert2rad(float theta)` where theta is you angles.
     - Here is the example:
         ```C++
-        
+        #include "Maths.h"
+        #include <iostream>
+
+        float angles = 180.f;
+        float radians = mathfunc::convert2rad(angles);
+
+        std::cout << angles << std::endl;
+        std::cout << radians << std::endl;
+
         /*
         output:
+
+        180.0
+        3.14159
         */
         
         ```
+
+- 
+
+
 
 
     

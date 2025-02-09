@@ -7,7 +7,7 @@ BOOL JIT_Render::SetCurPos(mathclass::VoidVec2d vec)
     return SetConsoleCursorPosition(hConsole, coords) ? true : false; 
 }
 
-BOOL JIT_Render::addLine(mathclass::VoidVec2d pos1, mathclass::VoidVec2d pos2, char filler = '*')
+BOOL JIT_Render::addLine(mathclass::VoidVec2d pos1, mathclass::VoidVec2d pos2, char filler)
 {
     int dx = abs(pos1.x - pos2.x);
     int dy = abs(pos1.y - pos2.y);
@@ -19,7 +19,7 @@ BOOL JIT_Render::addLine(mathclass::VoidVec2d pos1, mathclass::VoidVec2d pos2, c
     while (true)
     {
         this->SetCurPos(mathclass::VoidVec2d(pos1.x, pos1.y));
-        std::cout << filler;         // Печатаем символ
+        std::cout << filler;
 
         if (pos1.x == pos2.x && pos1.y == pos2.y)
             break;
@@ -39,5 +39,16 @@ BOOL JIT_Render::addLine(mathclass::VoidVec2d pos1, mathclass::VoidVec2d pos2, c
     }
     return true;
 }
+
+BOOL JIT_Render::addRect(mathclass::VoidVec2d pos1, mathclass::VoidVec2d pos2, char filler)
+{
+    bool side1 = addLine(pos1, mathclass::VoidVec2d(pos2.x, pos1.y), filler);
+    bool side2 = addLine(mathclass::VoidVec2d(pos2.x, pos1.y), pos2, filler);
+    bool side3 = addLine(pos2, mathclass::VoidVec2d(pos1.x, pos2.y), filler);
+    bool side4 = addLine(mathclass::VoidVec2d(pos1.x, pos2.y), pos1, filler);
+
+    return (side1 && side2 && side3 && side4);
+}
+
 
 

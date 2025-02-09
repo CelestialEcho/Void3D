@@ -127,10 +127,18 @@ std::ostream& mathclass::operator<<(std::ostream& os, const mathclass::Matrix& m
     }
     return os;
 }
+//--------------------------------------------------------------------------------------------
+//mathfunc namespace defenition
+//
+
+float mathfunc::convert2rad(float theta)
+{
+    return theta * M_PI / 180.f; 
+}
 
 
 //--------------------------------------------------------------------------------------------
-//Matrix Transformation Constants
+//mathconst namespace defenition
 
 mathclass::Matrix mathconst::offset(float x, float y, float z)
 {
@@ -166,7 +174,6 @@ mathclass::Matrix mathconst::rotate(float x, float y, float z)
         {0, 0, 0, 1}
     });
 
-    // Умножение матриц поворота
     return Rz * Ry * Rx; // !!! do not change the queue, cuz only this one is correct, in matricies r * v != v * r
 }
 
